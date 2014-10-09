@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+
+<html ng-app="markr" xmlns="http://www.w3.org/1999/html">
+    <head>
+        <meta charset="utf-8" />
+
+        <title>MapMarkr</title>
+
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.25/angular.min.js"></script>
+        <script src="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.js"></script>
+        <script type="text/javascript" src="@routes.Assets.at("javascripts/angular-leaflet-directive.min.js")"></script>
+
+        <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" />
+        <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.7.1/leaflet.css" />
+
+        <script type="text/javascript" src="@routes.Assets.at("javascripts/application.js")"></script>
+    </head>
+    <body>
+        <h2>WebSocket Demo</h2>
+
+        <div class="container-fluid">
+            <div class="row" ng-controller="mainCtrl">
+                <div class="col-xs-8">
+                    <form>
+                    <label>Username</label>
+                    <input type="text" ng-model="marker.username" required="required"/>
+                    <label>Latitude</label>
+                    <input type="number" min="-85" max="85" ng-model="marker.lat" required="required"/>
+                    <label>Longitude</label>
+                    <input type="number" min="-175" max="175" ng-model="marker.lng" required="required"/>
+                    <button ng-click="sendMessage()" class="btn btn-info">Send</button>
+                    </form>
+
+                    <leaflet width="100%" height="600px" markers="markers"></leaflet>
+                </div>
+                <div class="col-xs-4">
+                    <ol>
+                        <li ng-repeat="marker in markers track by $index">
+                        {{marker}}
+                        </li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>
