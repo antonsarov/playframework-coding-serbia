@@ -1,4 +1,4 @@
-This is your new Play application
-=================================
+Demo application showing the interaction between the Play Framework, Akka, HTML5 WebSockets and AngularJS.
+Presented at the Coding Serbia conference.
 
-This file will be packaged with your application, when using `activator dist`.
+Please look at the comments on lines 6-9 in public/javascripts/application.js before launching this application.
