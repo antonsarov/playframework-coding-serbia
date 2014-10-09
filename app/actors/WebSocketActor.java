@@ -1,14 +1,14 @@
 package actors;
 
 import akka.actor.*;
-import com.fasterxml.jackson.databind.JsonNode;
-import com.ning.http.client.websocket.WebSocket;
 import play.Logger;
-import play.libs.Akka;
 
 import java.util.HashSet;
 import java.util.Set;
 
+/**
+ * @author Anton Sarov
+ */
 public class WebSocketActor extends UntypedActor {
 
     private static final Set<ActorRef> channels = new HashSet<>();
@@ -18,8 +18,6 @@ public class WebSocketActor extends UntypedActor {
     }
 
     private ActorRef out;
-
-    private ActorSystem actorSystem = Akka.system();
 
     public WebSocketActor() {}
 
@@ -41,7 +39,6 @@ public class WebSocketActor extends UntypedActor {
         }
         Logger.debug("Message: " + message);
         if (message instanceof String) {
-
             channels.stream().forEach(channel->channel.tell(message, self()));
         }
     }

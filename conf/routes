@@ -3,7 +3,7 @@
 # ~~~~
 
 # Home page
-GET        /                    controllers.Application.wsClient()
+GET        /                    controllers.Application.index()
 GET        /ws                  controllers.Application.ws()
 
 # Map static resources from the /public folder to the /assets URL path

@@ -3,8 +3,10 @@ app.factory('MyService', function($rootScope) {
     var mService = {};
     mService.connection = {};
     mService.connect = function() {
+        // use this when deploying your application
         var wsUri = "ws://"+window.location.hostname+"/ws" ;
-        //var wsUri = "ws://localhost:9000/ws";
+        // use this when testing local
+        // var wsUri = "ws://localhost:9000/ws";
         var ws = new WebSocket ( wsUri ) ;
 
         ws.onopen = function ( ) {
@@ -66,9 +68,6 @@ app.controller("mainCtrl", function($rootScope, $scope, $http, MyService) {
         }
 
         if (!data.msg.trim.isEmpty && isValid(data.latitude) && isValid(data.longitude)) {
-//            $http.post('/move', data).success(function () {
-//                console.log("success");
-//            });
             MyService.postMsg(JSON.stringify(data));
         }
     };
